@@ -12,8 +12,11 @@ createGraph();
 draw();
 
 resetBTN.addEventListener(`click`, ()=>{
+    resetBTN.classList.add("selected");
     reset();
+    setTimeout(function(){resetBTN.classList.remove(`selected`)},120);
 })
+
 
 
 function createGraph(){
@@ -44,7 +47,7 @@ function erase(){
 
     for (let i = 0; i < divs.length; i++) {
         divs[i].onmouseenter = () => {
-            divs[i].classList.add("black");
+            divs[i].classList.remove("black");
         }
     }
 }
@@ -55,4 +58,4 @@ function reset(){
     for (let i = 0; i < divs.length; i++) {
         divs[i].classList.remove("black");
     }
-}
+} 

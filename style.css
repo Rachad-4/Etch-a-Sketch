@@ -31,10 +31,6 @@ body {
     background-color: black;
 }
 
-.white{
-    background-color: white;
-}
-
 .settings{
     display: flex;
     flex-direction: column;
@@ -48,4 +44,8 @@ button{
     height: 100px;
     width: 100px;
     border-radius: 50%;
+}
+
+.selected {
+    background-color: orangered;
 }
