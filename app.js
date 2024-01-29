@@ -1,12 +1,19 @@
 const grid = document.querySelector(`.grid`);
+const resizeBTN = document.querySelector(`#resize`);
+const eraseBTN = document.querySelector(`#erase`);
+const rainbowBTN = document.querySelector(`#rainbow`);
+const resetBTN = document.querySelector(`#reset`);
 
 let numOfBoxes = 75; 
 let divs; //defines "divs" variable that will hold list of divs
+let clear = false;
 
 createGraph();
 draw();
 
-
+resetBTN.addEventListener(`click`, ()=>{
+    reset();
+})
 
 
 function createGraph(){
@@ -33,11 +40,19 @@ function draw(){
 }
 
 function erase(){
-        divs = document.querySelectorAll("div");
+    divs = document.querySelectorAll("div");
 
     for (let i = 0; i < divs.length; i++) {
         divs[i].onmouseenter = () => {
             divs[i].classList.add("black");
         }
+    }
+}
+
+function reset(){
+    divs = document.querySelectorAll("div");
+
+    for (let i = 0; i < divs.length; i++) {
+        divs[i].classList.remove("black");
     }
 }
