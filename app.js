@@ -11,12 +11,26 @@ let clear = false;
 createGraph();
 draw();
 
-resetBTN.addEventListener(`click`, ()=>{
-    resetBTN.classList.add("selected");
-    reset();
-    setTimeout(function(){resetBTN.classList.remove(`selected`)},120);
+resetBTN.addEventListener(`click`, (button)=>{
+    animateButton(button);
+    reset(); 
 })
 
+resizeBTN.addEventListener(`click`, (button)=> {
+    for(let i = 0; i < numOfBoxes; i++){
+        const row = document.querySelector(`.row`); 
+        row.parentNode.removeChild(row);
+    }
+
+    numOfBoxes = parseInt(prompt("Enter new number of boxes (1 - 100). The default value is 75.")); 
+    if (isNaN(numOfBoxes) || numOfBoxes < 1 || numOfBoxes > 100) {
+        numOfBoxes = 75; 
+        alert(`A valid value was not entered. The default value will be applied.`);
+    }
+    createGraph();
+    draw();
+    animateButton(button);
+})
 
 
 function createGraph(){
@@ -59,3 +73,8 @@ function reset(){
         divs[i].classList.remove("black");
     }
 } 
+
+function animateButton(button){
+    button.target.classList.add(`selected`);
+    setTimeout(function(){button.target.classList.remove(`selected`)},120);
+}
