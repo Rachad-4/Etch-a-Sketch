@@ -69,9 +69,12 @@ function erase(){
 function reset(){
     divs = document.querySelectorAll("div");
 
-    for (let i = 0; i < divs.length; i++) {
-        divs[i].classList.remove("black");
+    for(let i = 0; i < numOfBoxes; i++){
+        const row = document.querySelector(`.row`); 
+        row.parentNode.removeChild(row);
     }
+
+    createGraph();
 } 
 
 function animateButton(button){
